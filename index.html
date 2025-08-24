@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel | Portfólio</title>
+    <link rel="icon" href="./images/code.png?v=2" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b1dbe2026e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="particles">
+    </div>
+    <nav class="navigation">
+        <ul class="menu">
+            <li>
+                <a href="#start" class="menu-link">Início</a>
+            </li>
+            <li>
+                <a href="#about" class="menu-link">Sobre</a>
+            </li>
+            <li>
+                <a href="#projects" class="menu-link">Projetos</a>
+            </li>
+            <li>
+                <a href="#contact" class="menu-link">Contato</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="start" class="header">
+        <img id="github-avatar" alt="Profile image" class="profile-image">
+        <h1>Gabriel Ribeiro Ferreira</h1>
+        <p class="header-sub-title">Desenvolvedor Fullstack</p>
+        <p class="header-description">
+                Sou Gabriel, Desenvolvedor Fullstack que cria interfaces modernas e responsivas, com experiência em HTML, CSS, JavaScript, React, TypeScript Styled Components, Redux Toolkit, RTK Query. Tenho facilidade em resolver problemas complexos e me comunico de forma clara, entregando projetos funcionais e com ótima experiência do usuário.
+            </p>
+    </main>
+
+    <section id="projects" class="projects">
+        <h2 class="projects-title">Meus <span>Projetos</span></h2>
+        <div class="projects-container">
+            <a href="https://calculadora-indice-massa-corporal.vercel.app/" target="_blank" class="projects-card">
+                <img src="./images/calculadora-imc.png" alt="Project 1" class="projects-image">
+                <div class="projects-container-text">
+                    <h3 class="projects-info">Calculadora de IMC</h3>
+                    <p class="projects-description">
+                        A Calculadora de IMC é um projeto desenvolvido em React que utiliza Styled Components para
+                        estilização e useState para gerenciamento de estado. O usuário pode inserir peso e altura e o
+                        aplicativo calcula automaticamente o IMC, exibindo também a classificação correspondente. O
+                        código é organizado em componentes funcionais, reforçando conceitos de reatividade e
+                        reutilização. Este projeto demonstra habilidades em React, gerenciamento de estado e criação de
+                        interfaces interativas.
+                    </p>
+                </div>
+            </a>
+
+            <a href="https://lp-evento-tech.vercel.app/" target="_blank"  class="projects-card">
+                <img src="./images/LP-evento.png" alt="Project 2" class="projects-image">
+                <div class="projects-container-text">
+                    <h3 class="projects-info">Página de evento tecnológico</h3>
+                    <p class="projects-description">
+                        A landing page foi desenvolvida utilizando HTML, SASS e JavaScript puro, explorando a biblioteca
+                        Math para cálculos e interações dinâmicas. A página conta com um cronômetro em tempo real,
+                        criado em JavaScript, que faz a contagem regressiva até o dia do evento. Com design moderno e
+                        responsivo, proporciona uma experiência de usuário fluida em diferentes dispositivos. Este
+                        projeto demonstra habilidades em manipulação do DOM, lógica em JavaScript, criação de
+                        interatividade e atenção ao design visual, reforçando fundamentos essenciais de front-end.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section class="contacts" id="contact">
+        <h2 class="contacts-title">Entre em <span>contato</span></h2>
+        <form class="contact-form" id="form" onsubmit="sendWhatsapp(event)">
+
+            <div class="form-group">
+                <input type="text" placeholder="Nome" class="form-field" id="name">
+            </div>
+
+            <div class="form-group">
+                <textarea rows="4" placeholder="Digite sua mensagem" class="form-field" id="message"></textarea>
+            </div>
+
+            <button type="submit" class="form-button" id="message">Enviar Whatsapp</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <a href="https://github.com/DEV-Gabriel7" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/dev-gabriel7/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:gabrielriferreira@hotmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2025 Gabriel Ferreira. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+
+        fetch("https://api.github.com/users/DEV-Gabriel7")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("github-avatar").src = data.avatar_url;
+            })
+            .catch(error => console.error("Erro ao buscar avatar:", error));
+
+
+
+        function sendWhatsapp(event) {
+            event.preventDefault()
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const telephone = '5547989016252'
+            const text = `Olá, me chamo ${name}, ${message}`
+
+            const formattedMsg = encodeURIComponent(text);
+            const url = `https://wa.me/${telephone}?text=${formattedMsg}`
+
+            window.open(url, '_blank')
+        }
+
+
+    </script>
+</body>
+
+</html>
